@@ -96,7 +96,7 @@ public class MouseEvents extends UserInterface {
 		});
 	}
 
-// HTML Export
+// HTML Export -- Generate directory (.html)
 	private void htmlExport () {
 		mntmHTML.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -108,8 +108,7 @@ public class MouseEvents extends UserInterface {
 							htmlExport.generateDirectory(csvFile);		// If acceptable, directory will be confirmed
 							showSuccessMessage();						// Inform user that the directory is confirmed 
 						}
-					}
-					else {	// directory doesn't already exist
+					} else {	// directory doesn't already exist
 						HtmlExport htmlExport = new HtmlExport();
 						htmlExport.generateDirectory(csvFile);			// Generate the directory
 						showSuccessMessage();							// Inform user that the directory is confirmed
@@ -119,5 +118,62 @@ public class MouseEvents extends UserInterface {
 				}
 			}
 		});
+	}
+	
+//Search Action
+	private void buttonSearchAction() {
+		buttonSearch.addActionListener(new ActionListener()) {
+			public void actionPerformed(ActionEvent arg0) {
+				if(customers == null) {
+					// do nothing
+				} else {
+					int previousIndex = index;		// Locate index in customer array
+					String inputSearch = textFieldSearch.getText().toLowerCase();	// Get String from textFieldSearch
+					String[] tokens = inputSearch.split(" ");		// Split the name input if user enters full name in one shot
+					selectedField = (String) sortComboBox.getSelectedItem(); 	// get the selected field that is in the combo box
+					index = -1;			// Set the index counter
+					
+					if(selectedField == "None"){
+							try {
+								FileParser f = new FileParser(csvFile);
+								customers = f.getCustomers();
+							} catch(Exception e) {
+								showErrorDialog();	// error message
+							}
+						}
+						
+						for(int i=0; i<customers.length; i++){
+							if(inputSearch.equals(customers[i].getFirstName().toLowerCase()) 			// first name
+									|| inputSearch.equals(customers[i].getLastName().toLowerCase()) 	// last name
+									|| inputSearch.equals(customers[i].getAddress().toLowerCase()) 		// address
+									|| inputSearch.equals(customers[i].getCity().toLowerCase()) 		// city
+									|| inputSearch.equals(customers[i].getState().toLowerCase()) 		// state
+									|| inputSearch.equals(customers[i].getZip().toLowerCase())			// zip 
+									|| inputSearch.equals(customers[i].getCounty().toLowerCase())		// county
+									|| inputSearch.equals(customers[i].getCompany().toLowerCase())		// company
+									|| inputSearch.equals(customers[i].getPhone().toLowerCase())		// phone
+									|| inputSearch.equals(customers[i].getEmail().toLowerCase()) 		// email
+									|| inputSearch.equals(customers[i].getFax().toLowerCase()) 			// fax
+									|| inputSearch.equals(customers[i].getWeb().toLowerCase())			// web
+									|| (tokens[0].equals(customers[i].getFirstName().toLowerCase()) && tokens[1].equals(customers[i].getLastName().toLowerCase()))){	// first and last name
+									index = i;
+									break;
+							}
+						}
+						
+						if(index == -1){
+							index = previousIndex;
+							customerNotFound.setText("Customer not found!");
+						}
+						else {
+							displayCustomer(customers[index]);
+						}
+					}
+				}
+			}
+		});	
+				}
+			}
+		}
 	}
 }
