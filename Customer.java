@@ -6,7 +6,7 @@
 
 public class Customer {
 	private String firstName;
-	private String lastName:
+	private String lastName;
 	private String address;
 	private String city;
 	private String state;
@@ -32,5 +32,52 @@ public class Customer {
 		this.email = email;
 		this.fax = fax;
 		this.web = web;
+	}
+	
+	public String getFirstName() {
+		return firstName;
+	}
+	
+	public String getLastName() {
+		return lastName;
+	}
+	
+	public String getAddress() {
+		return address;
+	}
+	
+	public String getCity() {
+		return city;
+	}
+	
+	public String getState() {
+		return state;
+	}
+	
+	public String getZip() {
+		return zip;
+	}
+	public String getCounty() {
+		return county;
+	}
+	
+	public String getCompany() {
+		return company;
+	}
+	
+	public String getPhone() {
+		return phone;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+	
+	public String getFax() {
+		return fax;
+	}
+	
+	public String getWeb() {
+		return web;
 	}
 }
