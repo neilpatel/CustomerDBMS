@@ -89,11 +89,10 @@ public class MouseEvents extends UserInterface {
 
 // About Action 
 	private void aboutAction() {
-		private void aboutAction() {
-			mntmAbout.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent arg0){
-					showAboutMessage();
-				}
+		mntmAbout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0){
+				showAboutMessage();
+			}
 		});
 	}
 
