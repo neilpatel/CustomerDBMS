@@ -172,8 +172,42 @@ public class MouseEvents extends UserInterface {
 				}
 			}
 		});	
+
+// Jump to next or previous customers using scroll wheel
+	private void mouseWheelAction() {
+		contentPane.addMouseWheelListener(new MouseWheelListener() {
+			public void mouseWheelMoved(MouseWheelEvent e) {
+				if(customers == null){} // do nothing
+				else {
+					int wheelRotation = e.getWheelRotation();
+					if(wheelRotation > 0) {	// previous customer
+						if(index <= 0) index = 0;
+						else index--;
+						displayCustomer(customers[index]);
+					}
+					
+					if(wheelRotation < 0) {	// next customer
+						if(index >= customers.length-1) index = customers.length-1;
+						else index++;
+						displayCustomer(customers[index]);
+					}
 				}
 			}
-		}
+		});
 	}
+	
+	// Jump to first customer button
+	private void buttonFirstAction() {
+		buttonFirst.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(customers == null){} // do nothing
+				else {
+					index = 0;
+					displayCustomer(customers[index]);
+				}
+			}
+		});
+	}		
+		
+		
 }
