@@ -207,7 +207,70 @@ public class MouseEvents extends UserInterface {
 				}
 			}
 		});
-	}		
+	}
+	
+	// Jump to previous customer button
+	private void buttonPreviousAction() {
+		buttonPrevious.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(customers == null){} // do nothing
+				else {
+					if(index <= 0) index = 0;
+					else index--;
+					displayCustomer(customers[index]);
+				}
+			}
+		});
+	}
+	
+	// Jump to next customer button
+	private void buttonNextAction() {
+		buttonNext.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(customers == null){} // do nothing
+				else {
+					if(index >= customers.length-1) index = customers.length-1;
+					else index++;
+					displayCustomer(customers[index]);
+				}
+			}
+		});
+	}
+
+	// Jump to last customer button
+	private void buttonLastAction() {
+		buttonLast.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(customers == null){} // do nothing
+				else {
+					index = customers.length-1;
+					displayCustomer(customers[index]);
+				}
+			}
+		});
+	}
+
+	// Jump to specific customer button
+	private void buttonGoToAction() {
+		buttonGoTo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(customers == null){} // do nothing
+				else {
+					if(textFieldGoToRecord.getText().isEmpty()){} // do nothing
+					else if(textFieldGoToRecord.getText().matches("\\d+")) {	// checks if the input is an integer
+						int inputGoToRecord = Integer.parseInt(textFieldGoToRecord.getText());
+						
+						if(inputGoToRecord <= 0 || inputGoToRecord > customers.length) txtRecordOf.setText("Invalid Input");	// checks if input is not within bounds
+						else {
+							index = inputGoToRecord-1;
+							displayCustomer(customers[index]);
+						}
+					}
+					else txtRecordOf.setText("Invalid Input");	// invalid input for all values differant than an integer
+				}
+			}
+		});
+	}
 		
 		
 }
