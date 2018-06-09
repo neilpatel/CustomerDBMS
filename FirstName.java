@@ -6,7 +6,6 @@
 
 // import statements
 import java.util.Comparator;
-import java.util.Comparator;
 
 public class FirstNameComparator implements Comparator<Customer> {
 	SortOrder sortOrder;
