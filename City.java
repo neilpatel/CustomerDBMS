@@ -10,7 +10,7 @@ import java.util.Comparator;
 public class City implements Comparator<Customer> {
 	SortOrder sortOrder;
 	
-	public CityComparator(SortOrder sortOrder) {
+	public City(SortOrder sortOrder) {
 		this.sortOrder = sortOrder;
 	}
 

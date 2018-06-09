@@ -11,7 +11,7 @@ import java.util.Comparator;
 public class Address implements Comparator<Customer> {
 	SortOrder sortOrder;
 	
-	public AddressComparator(SortOrder sortOrder) {
+	public Address(SortOrder sortOrder) {
 		this.sortOrder = sortOrder;
 	}
 	

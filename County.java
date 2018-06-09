@@ -10,7 +10,7 @@ import java.util.Comparator;
 public class County implements Comparator<Customer> {
 	SortOrder sortOrder;
 	
-	public CountyComparator(SortOrder sortOrder) {
+	public County(SortOrder sortOrder) {
 		this.sortOrder = sortOrder;
 	}
 
