@@ -5,6 +5,7 @@
 */
 
 // import statements
+import java.util.Comparator;
 
 public class Company implements Comparator<Customer> {
 	SortOrder sortOrder;
