@@ -23,6 +23,4 @@ public class City implements Comparator<Customer> {
 		if(sortOrder == SortOrder.ascending)return city1.compareTo(city2);
 		else return city2.compareTo(city1);
 	}
-
-
 }
