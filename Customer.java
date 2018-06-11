@@ -18,7 +18,6 @@ public class Customer {
 	private String fax;
 	private String web;
 	
-	
 	public Customer(String fileName, String lastName, String company, String address, String city, String county, String state, String zip, String phone, String fax, String email, String web) {
 		this.firstName = firstName;
 		this.lastName = lastName;
