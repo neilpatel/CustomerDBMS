@@ -19,7 +19,7 @@ public class ExportHTML {
 		Customer[] customers = f.getCustomers();
 		Arrays.sort(customers, new State(SortORder.ascending));
 		
-		new File("HTML Directory\").mkdir();
+		new File("HTML Directory/").mkdir();
 		PrintStream htmlIndex = new PrintStream(new File("index.html"));
 		String state = customers[0].getState(); 
 		String currentDirectory = "HTML Directory/" + state;
@@ -31,7 +31,7 @@ public class ExportHTML {
 		
 	}
 	
-	// export2HTML Function to create a html page with the customer fields
+	// export2HTML Function to create a html page with the customer fields *** TO DO!!!!!
 	
 // HTML Exporting Helper functions
 
@@ -54,5 +54,4 @@ public class ExportHTML {
 	private String cityMapLink(String city, String state, String county, String linkText) {
 		return "<a href=\"https://www.google.com/maps/place/" + city + ",+" + state + ",+" + county + "\" target=\"_blank\">" + linkText + "</a>";
 	}
-
 }
