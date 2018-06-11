@@ -18,6 +18,7 @@ import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
+import java.awt.Desktop;
 
 
 // Start of MouseEvents Class
@@ -36,8 +37,16 @@ public class MouseEvents extends UserInterface {
 		clearAction();
 		exitAction();
 		aboutAction();
-		htmlExport();
-		// ToDo: search button, search button functionality, navigation options. 
+		exportHTML();
+		buttonSearchAction();
+		mouseWheelAction();
+		buttonFirstAction();
+		buttonPreviousAction();
+		buttonNextAction();
+		buttonLastAction();
+		buttonGoToAction();
+		sortAction();
+		checkBoxSortAction();
 	}
 
 // Action Listener Functionality
@@ -97,20 +106,20 @@ public class MouseEvents extends UserInterface {
 	}
 
 // HTML Export -- Generate directory (.html)
-	private void htmlExport () {
+	private void exportHTML () {
 		mntmHTML.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(customers == null){} // do nothing
 				else try {
 					if(new File("HTML Directory").exists()) {			// Does the directory exist?
 						if(showDuplicateDirectoryFoundMessage() == 1){	// Ask the user if they want to override the current file they requested
-							HtmlExport htmlExport = new HtmlExport();
-							htmlExport.generateDirectory(csvFile);		// If acceptable, directory will be confirmed
+							ExportHTML exportHTML = new ExportHTML();
+							exportHTML.generateDirectory(csvFile);		// If acceptable, directory will be confirmed
 							showSuccessMessage();						// Inform user that the directory is confirmed 
 						}
 					} else {	// directory doesn't already exist
-						HtmlExport htmlExport = new HtmlExport();
-						htmlExport.generateDirectory(csvFile);			// Generate the directory
+						ExportHTML exportHTML = new ExportHTML();
+						exportHTML.generateDirectory(csvFile);			// Generate the directory
 						showSuccessMessage();							// Inform user that the directory is confirmed
 					}
 				} catch (IOException e) {
@@ -122,18 +131,21 @@ public class MouseEvents extends UserInterface {
 	
 // Search Action
 	private void buttonSearchAction() {
-		buttonSearch.addActionListener(new ActionListener()) {
+		buttonSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(customers == null) {
 					// do nothing
 				} else {
-					int previousIndex = index;		// Locate index in customer array
-					String inputSearch = textFieldSearch.getText().toLowerCase();	// Get String from textFieldSearch
-					String[] tokens = inputSearch.split(" ");		// Split the name input if user enters full name in one shot
-					selectedField = (String) sortComboBox.getSelectedItem(); 	// get the selected field that is in the combo box
-					index = -1;			// Set the index counter
-					
-					if(selectedField == "None"){
+					if(textFieldSearch.getText().isEmpty()){
+						// do nothing
+					} else {
+						int previousIndex = index;		// Locate index in customer array
+						String inputSearch = textFieldSearch.getText().toLowerCase();	// Get String from textFieldSearch
+						String[] tokens = inputSearch.split(" ");		// Split the name input if user enters full name in one shot
+						selectedField = (String) sortComboBox.getSelectedItem(); 	// get the selected field that is in the combo box
+						index = -1;			// Set the index counter
+						
+						if(selectedField == "None"){
 							try {
 								FileParser f = new FileParser(csvFile);
 								customers = f.getCustomers();
@@ -141,7 +153,7 @@ public class MouseEvents extends UserInterface {
 								showErrorDialog();	// error message
 							}
 						}
-						
+							
 						for(int i=0; i<customers.length; i++){
 							if(inputSearch.equals(customers[i].getFirstName().toLowerCase()) 			// first name
 									|| inputSearch.equals(customers[i].getLastName().toLowerCase()) 	// last name
@@ -160,7 +172,7 @@ public class MouseEvents extends UserInterface {
 									break;
 							}
 						}
-						
+							
 						if(index == -1){
 							index = previousIndex;
 							customerNotFound.setText("Customer not found!");
@@ -171,7 +183,8 @@ public class MouseEvents extends UserInterface {
 					}
 				}
 			}
-		};	
+		});	
+	}
 
 // Jump to next or previous customers using scroll wheel
 	private void mouseWheelAction() {
@@ -286,63 +299,63 @@ public class MouseEvents extends UserInterface {
 						displayCustomer(customers[index]);   // Display the customer information based on the current index
 						break;
 					case "First Name":	// sort by First Name
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new FirstNameComparator(SortOrder.descending));
-						else Arrays.sort(customers, new FirstNameComparator(SortOrder.ascending));
+						if(chckbxDescending.isSelected()) Arrays.sort(customers, new FirstName(SortOrder.descending));
+						else Arrays.sort(customers, new FirstName(SortOrder.ascending));
 						displayCustomer(customers[index]);   // Display the customer information based on the current index	
 						break;
 					case "Last Name":	// sort by Last Name
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new LastNameComparator(SortOrder.descending));
-						else Arrays.sort(customers, new LastNameComparator(SortOrder.ascending));
+						if(chckbxDescending.isSelected()) Arrays.sort(customers, new LastName(SortOrder.descending));
+						else Arrays.sort(customers, new LastName(SortOrder.ascending));
 						displayCustomer(customers[index]);   // Display the customer information based on the current index	
 						break;
 					case "Company":		// sort by Company
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new CompanyComparator(SortOrder.descending));
-						else Arrays.sort(customers, new CompanyComparator(SortOrder.ascending));
+						if(chckbxDescending.isSelected()) Arrays.sort(customers, new Company(SortOrder.descending));
+						else Arrays.sort(customers, new Company(SortOrder.ascending));
 						displayCustomer(customers[index]);   // Display the customer information based on the current index	
 						break;
 					case "Address":		// sort by Address
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new AddressComparator(SortOrder.descending));
-						else Arrays.sort(customers, new AddressComparator(SortOrder.ascending));
+						if(chckbxDescending.isSelected()) Arrays.sort(customers, new Address(SortOrder.descending));
+						else Arrays.sort(customers, new Address(SortOrder.ascending));
 						displayCustomer(customers[index]);   // Display the customer information based on the current index
 						break;
 					case "City":		// sort by City
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new CityComparator(SortOrder.descending));
-						else Arrays.sort(customers, new CityComparator(SortOrder.ascending));
+						if(chckbxDescending.isSelected()) Arrays.sort(customers, new City(SortOrder.descending));
+						else Arrays.sort(customers, new City(SortOrder.ascending));
 						displayCustomer(customers[index]);   // Display the customer information based on the current index	
 						break;
 					case "County":		// sort by County
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new CountyComparator(SortOrder.descending));
-						else Arrays.sort(customers, new CountyComparator(SortOrder.ascending));
+						if(chckbxDescending.isSelected()) Arrays.sort(customers, new County(SortOrder.descending));
+						else Arrays.sort(customers, new County(SortOrder.ascending));
 						displayCustomer(customers[index]);   // Display the customer information based on the current index	
 						break;
 					case "State":		// sort by State
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new StateComparator(SortOrder.descending));
-						else Arrays.sort(customers, new StateComparator(SortOrder.ascending));
+						if(chckbxDescending.isSelected()) Arrays.sort(customers, new State(SortOrder.descending));
+						else Arrays.sort(customers, new State(SortOrder.ascending));
 						displayCustomer(customers[index]);   // Display the customer information based on the current index	
 						break;
 					case "ZIP":			// sort by ZIP
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new ZipComparator(SortOrder.descending));
-						else Arrays.sort(customers, new ZipComparator(SortOrder.ascending));
+						if(chckbxDescending.isSelected()) Arrays.sort(customers, new Zip(SortOrder.descending));
+						else Arrays.sort(customers, new Zip(SortOrder.ascending));
 						displayCustomer(customers[index]);   // Display the customer information based on the current index	
 						break;
 					case "Phone":		// sort by Phone
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new PhoneComparator(SortOrder.descending));
-						else Arrays.sort(customers, new PhoneComparator(SortOrder.ascending));
+						if(chckbxDescending.isSelected()) Arrays.sort(customers, new Phone(SortOrder.descending));
+						else Arrays.sort(customers, new Phone(SortOrder.ascending));
 						displayCustomer(customers[index]);   // Display the customer information based on the current index	
 						break;
 					case "Fax":			// sort by Fax
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new FaxComparator(SortOrder.descending));
-						else Arrays.sort(customers, new FaxComparator(SortOrder.ascending));
+						if(chckbxDescending.isSelected()) Arrays.sort(customers, new Fax(SortOrder.descending));
+						else Arrays.sort(customers, new Fax(SortOrder.ascending));
 						displayCustomer(customers[index]);   // Display the customer information based on the current index	
 						break;
 					case "Email":		// sort by Email
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new EmailComparator(SortOrder.descending));
-						else Arrays.sort(customers, new EmailComparator(SortOrder.ascending));
+						if(chckbxDescending.isSelected()) Arrays.sort(customers, new Email(SortOrder.descending));
+						else Arrays.sort(customers, new Email(SortOrder.ascending));
 						displayCustomer(customers[index]);   // Display the customer information based on the current index	
 						break;
 					case "Web":			// sort by Web
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new WebComparator(SortOrder.descending));
-						else Arrays.sort(customers, new WebComparator(SortOrder.ascending));
+						if(chckbxDescending.isSelected()) Arrays.sort(customers, new Web(SortOrder.descending));
+						else Arrays.sort(customers, new Web(SortOrder.ascending));
 						displayCustomer(customers[index]);   // Display the customer information based on the current index	
 						break;
 					}
@@ -365,63 +378,63 @@ public class MouseEvents extends UserInterface {
 						displayCustomer(customers[index]);   // Display the customer information based on the current index
 						break;
 					case "First Name":	// sort by First Name
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new FirstNameComparator(SortOrder.descending));
-						else Arrays.sort(customers, new FirstNameComparator(SortOrder.ascending));
+						if(chckbxDescending.isSelected()) Arrays.sort(customers, new FirstName(SortOrder.descending));
+						else Arrays.sort(customers, new FirstName(SortOrder.ascending));
 						displayCustomer(customers[index]);   // Display the customer information based on the current index
 						break;
 					case "Last Name":	// sort by Last Name
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new LastNameComparator(SortOrder.descending));
-						else Arrays.sort(customers, new LastNameComparator(SortOrder.ascending));
+						if(chckbxDescending.isSelected()) Arrays.sort(customers, new LastName(SortOrder.descending));
+						else Arrays.sort(customers, new LastName(SortOrder.ascending));
 						displayCustomer(customers[index]);   // Display the customer information based on the current index
 						break;
 					case "Company":		// sort by Company
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new CompanyComparator(SortOrder.descending));
-						else Arrays.sort(customers, new CompanyComparator(SortOrder.ascending));
+						if(chckbxDescending.isSelected()) Arrays.sort(customers, new Company(SortOrder.descending));
+						else Arrays.sort(customers, new Company(SortOrder.ascending));
 						displayCustomer(customers[index]);   // Display the customer information based on the current index
 						break;
 					case "Address":		// sort by Address
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new AddressComparator(SortOrder.descending));
-						else Arrays.sort(customers, new AddressComparator(SortOrder.ascending));
+						if(chckbxDescending.isSelected()) Arrays.sort(customers, new Address(SortOrder.descending));
+						else Arrays.sort(customers, new Address(SortOrder.ascending));
 						displayCustomer(customers[index]);   // Display the customer information based on the current index
 						break;
 					case "City":		// sort by City
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new CityComparator(SortOrder.descending));
-						else Arrays.sort(customers, new CityComparator(SortOrder.ascending));
+						if(chckbxDescending.isSelected()) Arrays.sort(customers, new City(SortOrder.descending));
+						else Arrays.sort(customers, new City(SortOrder.ascending));
 						displayCustomer(customers[index]);   // Display the customer information based on the current index
 						break;
 					case "County":		// sort by County
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new CountyComparator(SortOrder.descending));
-						else Arrays.sort(customers, new CountyComparator(SortOrder.ascending));
+						if(chckbxDescending.isSelected()) Arrays.sort(customers, new County(SortOrder.descending));
+						else Arrays.sort(customers, new County(SortOrder.ascending));
 						displayCustomer(customers[index]);   // Display the customer information based on the current index
 						break;
 					case "State":		// sort by State
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new StateComparator(SortOrder.descending));
-						else Arrays.sort(customers, new StateComparator(SortOrder.ascending));
+						if(chckbxDescending.isSelected()) Arrays.sort(customers, new State(SortOrder.descending));
+						else Arrays.sort(customers, new State(SortOrder.ascending));
 						displayCustomer(customers[index]);   // Display the customer information based on the current index
 						break;
 					case "ZIP":			// sort by ZIP
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new ZipComparator(SortOrder.descending));
-						else Arrays.sort(customers, new ZipComparator(SortOrder.ascending));
+						if(chckbxDescending.isSelected()) Arrays.sort(customers, new Zip(SortOrder.descending));
+						else Arrays.sort(customers, new Zip(SortOrder.ascending));
 						displayCustomer(customers[index]);   // Display the customer information based on the current index
 						break;
 					case "Phone":		// sort by Phone
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new PhoneComparator(SortOrder.descending));
-						else Arrays.sort(customers, new PhoneComparator(SortOrder.ascending));
+						if(chckbxDescending.isSelected()) Arrays.sort(customers, new Phone(SortOrder.descending));
+						else Arrays.sort(customers, new Phone(SortOrder.ascending));
 						displayCustomer(customers[index]);   // Display the customer information based on the current index
 						break;
 					case "Fax":			// sort by Fax
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new FaxComparator(SortOrder.descending));
-						else Arrays.sort(customers, new FaxComparator(SortOrder.ascending));
+						if(chckbxDescending.isSelected()) Arrays.sort(customers, new Fax(SortOrder.descending));
+						else Arrays.sort(customers, new Fax(SortOrder.ascending));
 						displayCustomer(customers[index]);   // Display the customer information based on the current index
 						break;
 					case "Email":		// sort by Email
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new EmailComparator(SortOrder.descending));
-						else Arrays.sort(customers, new EmailComparator(SortOrder.ascending));
+						if(chckbxDescending.isSelected()) Arrays.sort(customers, new Email(SortOrder.descending));
+						else Arrays.sort(customers, new Email(SortOrder.ascending));
 						displayCustomer(customers[index]);   // Display the customer information based on the current index
 						break;
 					case "Web":			// sort by Web
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new WebComparator(SortOrder.descending));
-						else Arrays.sort(customers, new WebComparator(SortOrder.ascending));
+						if(chckbxDescending.isSelected()) Arrays.sort(customers, new Web(SortOrder.descending));
+						else Arrays.sort(customers, new Web(SortOrder.ascending));
 						displayCustomer(customers[index]);   // Display the customer information based on the current index
 						break;
 					}
