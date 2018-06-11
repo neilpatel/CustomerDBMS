@@ -171,7 +171,7 @@ public class MouseEvents extends UserInterface {
 					}
 				}
 			}
-		});	
+		};	
 
 // Jump to next or previous customers using scroll wheel
 	private void mouseWheelAction() {
@@ -180,7 +180,7 @@ public class MouseEvents extends UserInterface {
 				if(customers == null){} // do nothing
 				else {
 					int wheelRotation = e.getWheelRotation();
-					if(wheelRotation > 0) {	If the rotation count is positive, go to previous customer
+					if(wheelRotation > 0) { //	If the rotation count is positive, go to previous customer
 						if(index <= 0) index = 0;
 						else index--;
 						displayCustomer(customers[index]);   // Display the customer information based on the current index		

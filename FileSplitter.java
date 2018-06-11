@@ -12,7 +12,7 @@ public class FileSplitter {
 	private Scanner input;
 	private File filePath;
 		
-	public FileParser(File file) throws FileNotFoundException {
+	public FileSpliter(File file) throws FileNotFoundException {
 		input = new Scanner(file);
 		filePath = file;
 	}
