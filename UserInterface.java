@@ -22,7 +22,7 @@ import javax.swing.border.EmptyBorder;
 
 
 // Start of User Interface GUI Class
-@SupressWarnings({ "rawtypes", "unchecked", "serial" })
+@SuppressWarnings({ "rawtypes", "unchecked", "serial" })
 public class UserInterface extends JFrame {
 	protected JPanel contentPane;
 	protected JMenuBar menuBar;
