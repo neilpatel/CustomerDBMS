@@ -22,14 +22,13 @@ import java.awt.Desktop;
 
 
 // Start of MouseEvents Class
-
 @SuppressWarnings("serial")
 public class MouseEvents extends UserInterface {
-	private File csvFile;		// CSV File
-	private int index;		// Index/Position Counter
-	private String selectedField;		// Keep track of each field
-	private Customer [] customers;		// Array of sorted Customers
-	private Customer [] unsortedCustomers;		// Array of unsorted Customers
+	private File csvFile;					// CSV File
+	private int index;						// Index/Position Counter
+	private String selectedField;			// Keep track of each field
+	private Customer [] customers;			// Array of sorted Customers
+	private Customer [] unsortedCustomers;	// Array of unsorted Customers
 
 // Constructors
 	public MouseEvents() {
@@ -50,7 +49,6 @@ public class MouseEvents extends UserInterface {
 	}
 
 // Action Listener Functionality
-
 //Open File
 	private void openFileAction() {
 		mntmOpen.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, InputEvent.CTRL_DOWN_MASK));	// CTRL O key-bind
@@ -503,7 +501,7 @@ public class MouseEvents extends UserInterface {
 	
 	// Developer information dialog
 	private void showAboutMessage() {
-		String aboutMessage = "Developed by Jad Haidar\nVersion 2.5\nLast updated on 11/05/2015";
+		String aboutMessage = "Developed by Neil Patel\nLast updated on 6/11/2018";
 		JOptionPane.showMessageDialog(contentPane, aboutMessage, "About", JOptionPane.INFORMATION_MESSAGE);
 	}
 	
