@@ -7,10 +7,10 @@
 // import statements
 import java.util.Comparator;
 
-public class StateComparator implements Comparator<Customer> {
+public class State implements Comparator<Customer> {
 	SortOrder sortOrder;
 	
-	public StateComparator(SortOrder sortOrder) {
+	public State(SortOrder sortOrder) {
 		this.sortOrder = sortOrder;
 	}
 
@@ -19,7 +19,10 @@ public class StateComparator implements Comparator<Customer> {
 		String state1 = c1.getState();
 		String state2 = c2.getState();
 		
-		if(sortOrder == SortOrder.ascending)return state1.compareTo(state2);
-		else return state2.compareTo(state1);
+		if(sortOrder == SortOrder.ascending){
+			return state1.compareTo(state2);
+		} else {
+			return state2.compareTo(state1);
+		}
 	}
 }

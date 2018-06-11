@@ -7,10 +7,10 @@
 // import statements
 import java.util.Comparator;
 
-public class ZipComparator implements Comparator<Customer> {
+public class Zip implements Comparator<Customer> {
 	SortOrder sortOrder;
 	
-	public ZipComparator(SortOrder sortOrder) {
+	public Zip(SortOrder sortOrder) {
 		this.sortOrder = sortOrder;
 	}
 

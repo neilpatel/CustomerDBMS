@@ -19,7 +19,10 @@ public class County implements Comparator<Customer> {
 		String county1 = c1.getCounty();
 		String county2 = c2.getCounty();
 		
-		if(sortOrder == SortOrder.ascending)return county1.compareTo(county2);
-		else return county2.compareTo(county1);
+		if(sortOrder == SortOrder.ascending){
+			return county1.compareTo(county2);
+		} else {
+			return county2.compareTo(county1);
+		}
 	}
 }

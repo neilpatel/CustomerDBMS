@@ -19,7 +19,10 @@ public class LastName implements Comparator<Customer> {
 		String lastName1 = c1.getLastName();
 		String lastName2 = c2.getLastName();
 		
-		if(sortOrder == SortOrder.ascending)return lastName1.compareTo(lastName2);
-		else return lastName2.compareTo(lastName1);
+		if(sortOrder == SortOrder.ascending) {
+			return lastName1.compareTo(lastName2);
+		} else {
+			return lastName2.compareTo(lastName1);
+		}
 	}
 }

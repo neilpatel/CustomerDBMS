@@ -19,8 +19,10 @@ public class Company implements Comparator<Customer> {
 		String company1 = c1.getCompany();
 		String company2 = c2.getCompany();
 		
-		if(sortOrder == SortOrder.ascending)return company1.compareTo(company2);
-		else return company2.compareTo(company1);
+		if(sortOrder == SortOrder.ascending){
+			return company1.compareTo(company2);
+		} else {
+			return company2.compareTo(company1);
+		}
 	}
-
 }

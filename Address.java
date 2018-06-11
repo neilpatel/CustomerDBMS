@@ -5,7 +5,6 @@
 */
 
 // import statements
-
 import java.util.Comparator;
 
 public class Address implements Comparator<Customer> {
@@ -20,8 +19,10 @@ public class Address implements Comparator<Customer> {
 		String address1 = c1.getAddress();
 		String address2 = c2.getAddress();
 		
-		if(sortOrder == SortOrder.ascending)return address1.compareTo(address2);
-		else return address2.compareTo(address1);
+		if(sortOrder == SortOrder.ascending){
+			return address1.compareTo(address2);
+		} else {
+			return address2.compareTo(address1);
+		}
 	}
-
 }

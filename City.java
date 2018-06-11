@@ -19,7 +19,10 @@ public class City implements Comparator<Customer> {
 		String city1 = c1.getCity();
 		String city2 = c2.getCity();
 		
-		if(sortOrder == SortOrder.ascending)return city1.compareTo(city2);
-		else return city2.compareTo(city1);
+		if(sortOrder == SortOrder.ascending){
+			return city1.compareTo(city2);
+		} else { 
+			return city2.compareTo(city1);
+		}
 	}
 }

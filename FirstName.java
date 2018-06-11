@@ -7,10 +7,10 @@
 // import statements
 import java.util.Comparator;
 
-public class FirstNameComparator implements Comparator<Customer> {
+public class FirstName implements Comparator<Customer> {
 	SortOrder sortOrder;
 	
-	public FirstNameComparator(SortOrder sortOrder) {
+	public FirstName(SortOrder sortOrder) {
 		this.sortOrder = sortOrder;
 	}
 
