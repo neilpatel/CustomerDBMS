@@ -106,8 +106,9 @@ public class MouseEvents extends UserInterface {
 	private void exportHTML () {
 		mntmHTML.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(customers == null){} // do nothing
-				else try {
+				if(customers == null){
+					// do nothing
+				} else try {
 					if(new File("HTML Directory").exists()) {			// Does the directory exist?
 						if(showDuplicateDirectoryFoundMessage() == 1){	// Ask the user if they want to override the current file they requested
 							ExportHTML exportHTML = new ExportHTML();
@@ -173,8 +174,7 @@ public class MouseEvents extends UserInterface {
 						if(index == -1){
 							index = previousIndex;
 							customerNotFound.setText("Customer not found!");
-						}
-						else {
+						} else {
 							displayCustomer(customers[index]);   // Display the customer information based on the current index
 						}
 					}
@@ -187,19 +187,26 @@ public class MouseEvents extends UserInterface {
 	private void mouseWheelAction() {
 		contentPane.addMouseWheelListener(new MouseWheelListener() {
 			public void mouseWheelMoved(MouseWheelEvent e) {
-				if(customers == null){} // do nothing
-				else {
+				if(customers == null){
+					// do nothing
+				} else {
 					int wheelRotation = e.getWheelRotation();
 					if(wheelRotation > 0) { //	If the rotation count is positive, go to previous customer
-						if(index <= 0) index = 0;
-						else index--;
-						displayCustomer(customers[index]);   // Display the customer information based on the current index		
+						if(index <= 0) {
+							index = 0;
+						} else {
+							index--;
+							displayCustomer(customers[index]);   // Display the customer information based on the current index		
+						}
 					}
 					
 					if(wheelRotation < 0) {	// If the rotation count is negative, go the next customer
-						if(index >= customers.length-1) index = customers.length-1;
-						else index++;
-						displayCustomer(customers[index]);   // Display the customer information based on the current index 
+						if(index >= customers.length-1) {
+							index = customers.length-1;
+						} else {
+							index++;
+							displayCustomer(customers[index]);   // Display the customer information based on the current index 
+						}
 					}
 				}
 			}
@@ -210,8 +217,9 @@ public class MouseEvents extends UserInterface {
 	private void buttonFirstAction() {
 		buttonFirst.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(customers == null){} // do nothing
-				else {
+				if(customers == null){
+					// do nothing
+				} else {
 					index = 0;
 					displayCustomer(customers[index]);   // Display the customer information based on the current index
 				}
@@ -223,11 +231,15 @@ public class MouseEvents extends UserInterface {
 	private void buttonPreviousAction() {
 		buttonPrevious.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(customers == null){} // do nothing
-				else {
-					if(index <= 0) index = 0;
-					else index--;
-					displayCustomer(customers[index]);   // Display the customer information based on the current index	
+				if(customers == null){
+					// do nothing
+				} else {
+					if(index <= 0) {
+						index = 0;
+					} else { 
+						index--;
+						displayCustomer(customers[index]);   // Display the customer information based on the current index	
+					}	
 				}
 			}
 		});
@@ -237,11 +249,15 @@ public class MouseEvents extends UserInterface {
 	private void buttonNextAction() {
 		buttonNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(customers == null){} // do nothing
-				else {
-					if(index >= customers.length-1) index = customers.length-1;
-					else index++;
-					displayCustomer(customers[index]);   // Display the customer information based on the current index	
+				if(customers == null){
+					// do nothing
+				} else {
+					if(index >= customers.length-1) {
+						index = customers.length-1;
+					} else {
+						index++;
+						displayCustomer(customers[index]);   // Display the customer information based on the current index	
+					}
 				}
 			}
 		});
@@ -251,8 +267,9 @@ public class MouseEvents extends UserInterface {
 	private void buttonLastAction() {
 		buttonLast.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(customers == null){} // do nothing
-				else {
+				if(customers == null){
+					// do nothing
+				} else {
 					index = customers.length-1;
 					displayCustomer(customers[index]);   // Display the customer information based on the current index	
 				}
@@ -264,19 +281,23 @@ public class MouseEvents extends UserInterface {
 	private void buttonGoToAction() {
 		buttonGoTo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(customers == null){} // do nothing
-				else {
-					if(textFieldGoToRecord.getText().isEmpty()){} // do nothing
-					else if(textFieldGoToRecord.getText().matches("\\d+")) {	// checks if the input is an integer
+				if(customers == null){
+					// do nothing
+				} else {
+					if(textFieldGoToRecord.getText().isEmpty()){
+						// do nothing
+					} else if(textFieldGoToRecord.getText().matches("\\d+")) {	// checks if the input is an integer
 						int inputGoToRecord = Integer.parseInt(textFieldGoToRecord.getText());
 						
-						if(inputGoToRecord <= 0 || inputGoToRecord > customers.length) txtRecordOf.setText("Invalid Input");	// Check if the index is within the bounds
-						else {
+						if(inputGoToRecord <= 0 || inputGoToRecord > customers.length) {
+							txtRecordOf.setText("Invalid Input");	// Check if the index is within the bounds
+						} else {
 							index = inputGoToRecord-1;
 							displayCustomer(customers[index]);   // Display the customer information based on the current index	
 						}
+					} else {
+						txtRecordOf.setText("Invalid Input");	// Checks for an integer
 					}
-					else txtRecordOf.setText("Invalid Input");	// Checks for an integer
 				}
 			}
 		});
@@ -288,17 +309,21 @@ public class MouseEvents extends UserInterface {
 			public void actionPerformed(ActionEvent e) {
 				selectedField = (String) sortComboBox.getSelectedItem(); // get the selected field from JComboBox
 				index = 0;
-				
-				if(customers == null){} // do nothing
+				if(customers == null){
+					// do nothing
+				} 
 				else {
 					switch (selectedField) {
 					case "None":		// displays the unsorted array of customers
 						displayCustomer(customers[index]);   // Display the customer information based on the current index
 						break;
 					case "First Name":	// sort by First Name
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new FirstName(SortOrder.descending));
-						else Arrays.sort(customers, new FirstName(SortOrder.ascending));
-						displayCustomer(customers[index]);   // Display the customer information based on the current index	
+						if(chckbxDescending.isSelected()) {
+							Arrays.sort(customers, new FirstName(SortOrder.descending));
+						} else {
+							Arrays.sort(customers, new FirstName(SortOrder.ascending));
+							displayCustomer(customers[index]);   // Display the customer information based on the current index	
+						}
 						break;
 					case "Last Name":	// sort by Last Name
 						if(chckbxDescending.isSelected()) Arrays.sort(customers, new LastName(SortOrder.descending));
@@ -367,7 +392,6 @@ public class MouseEvents extends UserInterface {
 			public void actionPerformed(ActionEvent e) {
 				selectedField = (String) sortComboBox.getSelectedItem(); //get the selected field from JComboBox
 				index = 0;
-				
 				if(customers == null){} // do nothing
 				else {
 					switch (selectedField) {
@@ -514,7 +538,10 @@ public class MouseEvents extends UserInterface {
 	// Displays a confirmation prompt and returns which option was chosen (YES/NO)
 	private int showDuplicateDirectoryFoundMessage() {
 		String duplicatedDirectoryFound = "HTML directory already exists, do you want to override?";
-		if(JOptionPane.showConfirmDialog(contentPane, duplicatedDirectoryFound, "Warning", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == JOptionPane.YES_OPTION) return 1;
-		else return 0;
+		if(JOptionPane.showConfirmDialog(contentPane, duplicatedDirectoryFound, "Warning", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == JOptionPane.YES_OPTION) {
+			return 1;
+		} else {
+			return 0;
 		}
+	}
 }
