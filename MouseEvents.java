@@ -20,7 +20,6 @@ import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import java.awt.Desktop;
 
-
 // Start of MouseEvents Class
 @SuppressWarnings("serial")
 public class MouseEvents extends UserInterface {
@@ -452,16 +451,16 @@ public class MouseEvents extends UserInterface {
 	private void displayCustomerHelper(Customer c) {
 		textFieldFirstName.setText(c.getFirstName());
 		textFieldLastName.setText(c.getLastName());
-		textFieldCompany.setText(c.getCompany());
 		textFieldAddress.setText(c.getAddress());
 		textFieldCity.setText(c.getCity());
-		textFieldCounty.setText(c.getCounty());
 		textFieldState.setText(c.getState());
+		textFieldCounty.setText(c.getCounty());
 		textFieldZip.setText(c.getZip());
 		textFieldPhone.setText(c.getPhone());
-		textFieldFax.setText(c.getFax());
 		textFieldEmail.setText(c.getEmail());
 		textFieldWeb.setText(c.getWeb());
+		textFieldFax.setText(c.getFax());
+		textFieldCompany.setText(c.getCompany());
 		int displayedRecord = index + 1;
 		txtRecordOf.setText("Record " + displayedRecord + " of " + customers.length);	// Updates txtRecordOf
 		clearUserInput();
