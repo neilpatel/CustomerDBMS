@@ -165,9 +165,11 @@ public class MouseEvents extends UserInterface {
 									|| inputSearch.equals(customers[i].getEmail().toLowerCase()) 		// email
 									|| inputSearch.equals(customers[i].getFax().toLowerCase()) 			// fax
 									|| inputSearch.equals(customers[i].getWeb().toLowerCase())			// web
-									|| (tokens[0].equals(customers[i].getFirstName().toLowerCase()) && tokens[1].equals(customers[i].getLastName().toLowerCase()))){	// first and last name
+									|| (tokens[0].equals(customers[i].getFirstName().toLowerCase()) && tokens[1].equals(customers[i].getLastName().toLowerCase()))) {	// first and last name
+									
 									index = i;
 									break;
+							
 							}
 						}
 							
@@ -252,8 +254,8 @@ public class MouseEvents extends UserInterface {
 				if(customers == null){
 					// do nothing
 				} else {
-					if(index >= customers.length-1) {
-						index = customers.length-1;
+					if(index >= customers.length - 1) {
+						index = customers.length - 1;
 					} else {
 						index++;
 						displayCustomer(customers[index]);   // Display the customer information based on the current index	
@@ -270,7 +272,7 @@ public class MouseEvents extends UserInterface {
 				if(customers == null){
 					// do nothing
 				} else {
-					index = customers.length-1;
+					index = customers.length - 1;
 					displayCustomer(customers[index]);   // Display the customer information based on the current index	
 				}
 			}
@@ -292,7 +294,7 @@ public class MouseEvents extends UserInterface {
 						if(inputGoToRecord <= 0 || inputGoToRecord > customers.length) {
 							txtRecordOf.setText("Invalid Input");	// Check if the index is within the bounds
 						} else {
-							index = inputGoToRecord-1;
+							index = inputGoToRecord - 1;
 							displayCustomer(customers[index]);   // Display the customer information based on the current index	
 						}
 					} else {
@@ -326,59 +328,92 @@ public class MouseEvents extends UserInterface {
 						}
 						break;
 					case "Last Name":	// sort by Last Name
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new LastName(SortOrder.descending));
-						else Arrays.sort(customers, new LastName(SortOrder.ascending));
-						displayCustomer(customers[index]);   // Display the customer information based on the current index	
+						if(chckbxDescending.isSelected()) {
+							Arrays.sort(customers, new LastName(SortOrder.descending));
+						} else {
+							Arrays.sort(customers, new LastName(SortOrder.ascending));
+							displayCustomer(customers[index]);   // Display the customer information based on the current index	
+						}
 						break;
 					case "Company":		// sort by Company
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new Company(SortOrder.descending));
-						else Arrays.sort(customers, new Company(SortOrder.ascending));
-						displayCustomer(customers[index]);   // Display the customer information based on the current index	
+						if(chckbxDescending.isSelected()) {
+							Arrays.sort(customers, new Company(SortOrder.descending));
+						} else {
+							Arrays.sort(customers, new Company(SortOrder.ascending));
+							displayCustomer(customers[index]);   // Display the customer information based on the current index	
+						}
 						break;
 					case "Address":		// sort by Address
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new Address(SortOrder.descending));
-						else Arrays.sort(customers, new Address(SortOrder.ascending));
-						displayCustomer(customers[index]);   // Display the customer information based on the current index
+						if(chckbxDescending.isSelected()) {
+							Arrays.sort(customers, new Address(SortOrder.descending));
+						} else {
+							Arrays.sort(customers, new Address(SortOrder.ascending));
+							displayCustomer(customers[index]);   // Display the customer information based on the current index
+						}
 						break;
 					case "City":		// sort by City
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new City(SortOrder.descending));
-						else Arrays.sort(customers, new City(SortOrder.ascending));
-						displayCustomer(customers[index]);   // Display the customer information based on the current index	
+						if(chckbxDescending.isSelected()) {
+							Arrays.sort(customers, new City(SortOrder.descending));
+						} else {
+							Arrays.sort(customers, new City(SortOrder.ascending));
+							displayCustomer(customers[index]);   // Display the customer information based on the current index	
+						}
 						break;
 					case "County":		// sort by County
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new County(SortOrder.descending));
-						else Arrays.sort(customers, new County(SortOrder.ascending));
-						displayCustomer(customers[index]);   // Display the customer information based on the current index	
+						if(chckbxDescending.isSelected()) {
+							Arrays.sort(customers, new County(SortOrder.descending));
+						} else {
+							Arrays.sort(customers, new County(SortOrder.ascending));
+							displayCustomer(customers[index]);   // Display the customer information based on the current index	
+						}
 						break;
 					case "State":		// sort by State
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new State(SortOrder.descending));
-						else Arrays.sort(customers, new State(SortOrder.ascending));
-						displayCustomer(customers[index]);   // Display the customer information based on the current index	
+						if(chckbxDescending.isSelected()) {
+							Arrays.sort(customers, new State(SortOrder.descending));
+						} else {
+							Arrays.sort(customers, new State(SortOrder.ascending));
+							displayCustomer(customers[index]);   // Display the customer information based on the current index	
+						}
 						break;
 					case "ZIP":			// sort by ZIP
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new Zip(SortOrder.descending));
-						else Arrays.sort(customers, new Zip(SortOrder.ascending));
-						displayCustomer(customers[index]);   // Display the customer information based on the current index	
+						if(chckbxDescending.isSelected()) {
+							Arrays.sort(customers, new Zip(SortOrder.descending));
+						} else {
+							Arrays.sort(customers, new Zip(SortOrder.ascending));
+							displayCustomer(customers[index]);   // Display the customer information based on the current index	
+						}
 						break;
 					case "Phone":		// sort by Phone
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new Phone(SortOrder.descending));
-						else Arrays.sort(customers, new Phone(SortOrder.ascending));
-						displayCustomer(customers[index]);   // Display the customer information based on the current index	
+						if(chckbxDescending.isSelected()) {
+							Arrays.sort(customers, new Phone(SortOrder.descending));
+						} else {
+							Arrays.sort(customers, new Phone(SortOrder.ascending));
+							displayCustomer(customers[index]);   // Display the customer information based on the current index	
+						}
 						break;
 					case "Fax":			// sort by Fax
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new Fax(SortOrder.descending));
-						else Arrays.sort(customers, new Fax(SortOrder.ascending));
-						displayCustomer(customers[index]);   // Display the customer information based on the current index	
+						if(chckbxDescending.isSelected()) {
+							Arrays.sort(customers, new Fax(SortOrder.descending));
+						} else { 
+							Arrays.sort(customers, new Fax(SortOrder.ascending));
+							displayCustomer(customers[index]);   // Display the customer information based on the current index	
+						}
 						break;
 					case "Email":		// sort by Email
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new Email(SortOrder.descending));
-						else Arrays.sort(customers, new Email(SortOrder.ascending));
-						displayCustomer(customers[index]);   // Display the customer information based on the current index	
+						if(chckbxDescending.isSelected()) {
+							Arrays.sort(customers, new Email(SortOrder.descending));
+						} else {
+							Arrays.sort(customers, new Email(SortOrder.ascending));
+							displayCustomer(customers[index]);   // Display the customer information based on the current index	
+						}
 						break;
 					case "Web":			// sort by Web
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new Web(SortOrder.descending));
-						else Arrays.sort(customers, new Web(SortOrder.ascending));
-						displayCustomer(customers[index]);   // Display the customer information based on the current index	
+						if(chckbxDescending.isSelected()) {
+							Arrays.sort(customers, new Web(SortOrder.descending));
+						} else {
+							Arrays.sort(customers, new Web(SortOrder.ascending));
+							displayCustomer(customers[index]);   // Display the customer information based on the current index	
+						}
 						break;
 					}
 				}
@@ -392,71 +427,109 @@ public class MouseEvents extends UserInterface {
 			public void actionPerformed(ActionEvent e) {
 				selectedField = (String) sortComboBox.getSelectedItem(); //get the selected field from JComboBox
 				index = 0;
-				if(customers == null){} // do nothing
+				if(customers == null){
+					// do nothing
+				} 
 				else {
 					switch (selectedField) {
 					case "None":		// displays the unsorted array of customers
 						displayCustomer(customers[index]);   // Display the customer information based on the current index
 						break;
 					case "First Name":	// sort by First Name
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new FirstName(SortOrder.descending));
-						else Arrays.sort(customers, new FirstName(SortOrder.ascending));
-						displayCustomer(customers[index]);   // Display the customer information based on the current index
+						if(chckbxDescending.isSelected()) {
+							Arrays.sort(customers, new FirstName(SortOrder.descending));
+						} else {
+							Arrays.sort(customers, new FirstName(SortOrder.ascending));
+							displayCustomer(customers[index]);   // Display the customer information based on the current index
+						}
 						break;
 					case "Last Name":	// sort by Last Name
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new LastName(SortOrder.descending));
-						else Arrays.sort(customers, new LastName(SortOrder.ascending));
-						displayCustomer(customers[index]);   // Display the customer information based on the current index
+						if(chckbxDescending.isSelected()) {
+							Arrays.sort(customers, new LastName(SortOrder.descending));
+						} else {
+							Arrays.sort(customers, new LastName(SortOrder.ascending));
+							displayCustomer(customers[index]);   // Display the customer information based on the current index
+						}
 						break;
 					case "Company":		// sort by Company
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new Company(SortOrder.descending));
-						else Arrays.sort(customers, new Company(SortOrder.ascending));
-						displayCustomer(customers[index]);   // Display the customer information based on the current index
+						if(chckbxDescending.isSelected()) {
+							Arrays.sort(customers, new Company(SortOrder.descending));
+						} else {
+							Arrays.sort(customers, new Company(SortOrder.ascending));
+							displayCustomer(customers[index]);   // Display the customer information based on the current index
+						}
 						break;
 					case "Address":		// sort by Address
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new Address(SortOrder.descending));
-						else Arrays.sort(customers, new Address(SortOrder.ascending));
-						displayCustomer(customers[index]);   // Display the customer information based on the current index
+						if(chckbxDescending.isSelected()) {
+							Arrays.sort(customers, new Address(SortOrder.descending));
+						} else {
+							Arrays.sort(customers, new Address(SortOrder.ascending));
+							displayCustomer(customers[index]);   // Display the customer information based on the current index
+						}
 						break;
 					case "City":		// sort by City
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new City(SortOrder.descending));
-						else Arrays.sort(customers, new City(SortOrder.ascending));
-						displayCustomer(customers[index]);   // Display the customer information based on the current index
+						if(chckbxDescending.isSelected()) { 
+							Arrays.sort(customers, new City(SortOrder.descending));
+						} else {
+							Arrays.sort(customers, new City(SortOrder.ascending));
+							displayCustomer(customers[index]);   // Display the customer information based on the current index
+						}
 						break;
 					case "County":		// sort by County
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new County(SortOrder.descending));
-						else Arrays.sort(customers, new County(SortOrder.ascending));
-						displayCustomer(customers[index]);   // Display the customer information based on the current index
+						if(chckbxDescending.isSelected()) {
+							Arrays.sort(customers, new County(SortOrder.descending));
+						} else {
+							Arrays.sort(customers, new County(SortOrder.ascending));
+							displayCustomer(customers[index]);   // Display the customer information based on the current index
+						}
 						break;
 					case "State":		// sort by State
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new State(SortOrder.descending));
-						else Arrays.sort(customers, new State(SortOrder.ascending));
-						displayCustomer(customers[index]);   // Display the customer information based on the current index
+						if(chckbxDescending.isSelected()) {
+							Arrays.sort(customers, new State(SortOrder.descending));
+						} else {
+							Arrays.sort(customers, new State(SortOrder.ascending));
+							displayCustomer(customers[index]);   // Display the customer information based on the current index
+						}
 						break;
 					case "ZIP":			// sort by ZIP
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new Zip(SortOrder.descending));
-						else Arrays.sort(customers, new Zip(SortOrder.ascending));
-						displayCustomer(customers[index]);   // Display the customer information based on the current index
+						if(chckbxDescending.isSelected()) {
+							Arrays.sort(customers, new Zip(SortOrder.descending));
+						} else {
+							Arrays.sort(customers, new Zip(SortOrder.ascending));
+							displayCustomer(customers[index]);   // Display the customer information based on the current index
+						}
 						break;
 					case "Phone":		// sort by Phone
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new Phone(SortOrder.descending));
-						else Arrays.sort(customers, new Phone(SortOrder.ascending));
-						displayCustomer(customers[index]);   // Display the customer information based on the current index
+						if(chckbxDescending.isSelected()) {
+							Arrays.sort(customers, new Phone(SortOrder.descending));
+						} else {
+							Arrays.sort(customers, new Phone(SortOrder.ascending));
+							displayCustomer(customers[index]);   // Display the customer information based on the current index
+						}
 						break;
 					case "Fax":			// sort by Fax
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new Fax(SortOrder.descending));
-						else Arrays.sort(customers, new Fax(SortOrder.ascending));
-						displayCustomer(customers[index]);   // Display the customer information based on the current index
+						if(chckbxDescending.isSelected()) {
+							Arrays.sort(customers, new Fax(SortOrder.descending));
+						} else {
+							Arrays.sort(customers, new Fax(SortOrder.ascending));
+							displayCustomer(customers[index]);   // Display the customer information based on the current index
+						}
 						break;
 					case "Email":		// sort by Email
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new Email(SortOrder.descending));
-						else Arrays.sort(customers, new Email(SortOrder.ascending));
-						displayCustomer(customers[index]);   // Display the customer information based on the current index
+						if(chckbxDescending.isSelected()) {
+							Arrays.sort(customers, new Email(SortOrder.descending));
+						} else {
+							Arrays.sort(customers, new Email(SortOrder.ascending));
+							displayCustomer(customers[index]);   // Display the customer information based on the current index
+						}
 						break;
 					case "Web":			// sort by Web
-						if(chckbxDescending.isSelected()) Arrays.sort(customers, new Web(SortOrder.descending));
-						else Arrays.sort(customers, new Web(SortOrder.ascending));
-						displayCustomer(customers[index]);   // Display the customer information based on the current index
+						if(chckbxDescending.isSelected()) {
+							Arrays.sort(customers, new Web(SortOrder.descending));
+						} else {
+							Arrays.sort(customers, new Web(SortOrder.ascending));
+							displayCustomer(customers[index]);   // Display the customer information based on the current index
+						}
 						break;
 					}
 				}
