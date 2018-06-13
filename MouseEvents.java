@@ -597,7 +597,7 @@ public class MouseEvents extends UserInterface {
 	
 	// Developer information dialog
 	private void showAboutMessage() {
-		String aboutMessage = "Developed by Neil Patel\nLast updated on 6/13/2018\n Thanks for trying out my CustomerDBMS";
+		String aboutMessage = "Developed by Neil Patel\nLast updated on 6/13/2018\nThanks for trying out my CustomerDBMS";
 		JOptionPane.showMessageDialog(contentPane, aboutMessage, "About", JOptionPane.INFORMATION_MESSAGE);
 	}
 	
