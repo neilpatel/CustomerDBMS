@@ -1,0 +1,6 @@
+FirstName,LastName,Company,Address,City,County,State,ZIP,Phone,Fax,Email,Web
+"Neil","Patel","Neil's Personal","123 Temp Road","Glenmoore","Chester","PA","19343","123-456-7890","123-456-7890","patel@gmail.com","http://neilpatel.github.io"
+"Neil2","Patel2","Neil's Business","321 Temp Road","Pittsburgh","Allegheny","PA","15213","321-654-0987","321-654-0987","patel2@gmail.com","https://www.linkedin.com/in/neil-patel/"
+"Neil3","Patel3","Neil SWE","555 Temp Road","Harrisburg","Dauphin County","PA","11111","111-222-3333","111-222-3333","patel3@gmail.com","http://nbviewer.jupyter.org/github/neilpatel/neilpatel.github.io/blob/master/Online_Resume.pdf"
+"Neil4","Patel4","Neil MC","12345 Temp Road","Pittsburgh","Allegheny","PA","15213","919-929-9393","222-333-4444","patel4@gmail.com","http://pitt.edu/~nmp61"
+"Neil5","Patel5","Neil RoadBotics","54321 Temp Road","Pittsburgh","Allegheny","PA","15213","580-357-0385","333-444-5555","patel5@gmail.com","http://www.roadbotics.com"
