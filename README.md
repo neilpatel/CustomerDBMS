@@ -34,4 +34,20 @@ ___
 	+ `java CustomerDBMS`
 ___
 ## Customer Profile Database Features
-+ 
++ File
+	+ Open
+		+ Open a .CSV file
+	+ Generate HTML Directory
+		+ Create a HTML webpage with the CSV file loaded.
+		+ *You must have a CSV file loaded in order to generate a HTML webpage*
+	+ Clear
+		+ Clear the contents of the loaded file
+	+ Exit
+		+Exit the application
++ Help
+	+ A dialogue box with developer's information 
+
+___
+## Additional Hints:
++ Make sure you are using a CSV file. A Excel formatted CSV file may not be compatible.
+	+ A good way to check is to open the directory with a text editor and make sure the fields are surrounded with quotes.
