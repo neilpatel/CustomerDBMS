@@ -48,7 +48,7 @@ public class MouseEvents extends UserInterface {
 	}
 
 // Action Listener Functionality
-//Open File
+// Open File
 	private void openFileAction() {
 		mntmOpen.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, InputEvent.CTRL_DOWN_MASK));	// CTRL O key-bind
 		mntmOpen.addActionListener(new ActionListener() {

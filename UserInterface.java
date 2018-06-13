@@ -69,7 +69,7 @@ public class UserInterface extends JFrame {
 		setContentPane(contentPane);
 		setLocationRelativeTo(null);
 		setResizable(false);
-		setTitle("CustomerDBMS");
+		setTitle("Customer Profile Database System");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		menuBar = new JMenuBar();
