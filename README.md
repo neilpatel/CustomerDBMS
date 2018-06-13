@@ -29,9 +29,11 @@ ___
 + Clone the repository
 	+ `git clone https://github.com/neilpatel/CustomerDBMS.git`
 + To Compile:
-	+ `javac CustomerDBMS.java`
+	+ `javac *.java`
 + To Execute:
 	+ `java CustomerDBMS`
++ Screenshot Provided below
+	+ ![Compile-Execution Screenshot](https://github.com/neilpatel/CustomerDBMS/blob/master/screenshots/Compilation-Execution.PNG)
 ___
 ## Customer Profile Database Features
 + File
@@ -46,8 +48,13 @@ ___
 		+ Clear the contents of the loaded file
 	+ Exit
 		+ Exit the application
+	+ Screenshot provided below
+		+ ![FileMenu Screenshot](https://github.com/neilpatel/CustomerDBMS/blob/master/screenshots/FileMenu.PNG)
+___
 + Help
 	+ A dialogue box with developer's information 
+	+ Screenshot provided below
+		+ ![HelpMenu Screenshot](https://github.com/neilpatel/CustomerDBMS/blob/master/screenshots/HelpMenu.PNG)
 
 ___
 ## Additional Hints:
