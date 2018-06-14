@@ -55,6 +55,8 @@ ___
 	+ A dialogue box with developer's information 
 	+ Screenshot provided below
 		+ ![HelpMenu Screenshot](https://github.com/neilpatel/CustomerDBMS/blob/master/screenshots/HelpMenu.PNG)
+___
+<p align = "center"> <b> Hope you like the project!!  </b> </p>
 
 ___
 ## Additional Hints:
