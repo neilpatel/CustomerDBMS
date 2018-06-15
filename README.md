@@ -56,9 +56,8 @@ ___
 	+ Screenshot provided below
 		+ ![HelpMenu Screenshot](https://github.com/neilpatel/CustomerDBMS/blob/master/screenshots/HelpMenu.PNG)
 ___
-<p align = "center"> <b> Hope you like the project!!  </b> </p>
-
-___
 ## Additional Hints:
 + Make sure you are using a CSV file. A Excel formatted CSV file may not be compatible.
 	+ A good way to check is to open the directory with a text editor and make sure the fields are surrounded with quotes.
+___
+<p align = "center"> <b> Hope you like the project!!  </b> </p>
