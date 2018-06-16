@@ -601,11 +601,11 @@ public class MouseEvents extends UserInterface {
 		JOptionPane.showMessageDialog(contentPane, aboutMessage, "About", JOptionPane.INFORMATION_MESSAGE);
 	}
 	
-	// Displays confirmation message for Export HTML Directory and launches the index.html file
+	// Displays confirmation message for Export HTML Directory and launches the OpenMeUpForWebDirectory.html file
 	private void showSuccessMessage() throws IOException {
 		String successMage = "HTML directory has been successfully created.";
 		JOptionPane.showMessageDialog(contentPane, successMage, "Success", JOptionPane.INFORMATION_MESSAGE);
-		Desktop.getDesktop().browse(new File("index.html").toURI());
+		Desktop.getDesktop().browse(new File("OpenMeUpForWebDirectory.html").toURI());
 	}
 	
 	// Displays a confirmation prompt and returns which option was chosen (YES/NO)
