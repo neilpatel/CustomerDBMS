@@ -160,10 +160,10 @@ public class ExportHTML {
 							+				"\t\t\t" + customer.getCity() + ", " + customer.getState() + " " + customer.getZip() + "<br/>\n"
 							+				"\t\t\tPhone: " + customer.getPhone() + "<br/>\n"
 							+				"\t\t\tFax: " + customer.getFax() + "<br/><br/>\n"
-							+				"\t\t\t" + emailLink(customer.getEmail(), "Hello from Bob", customer.getEmail()) + "<br/>\n"
+							+				"\t\t\t" + emailLink(customer.getEmail(), "[Enter Your subject Header Here]", customer.getEmail()) + "<br/>\n"
 							+				"\t\t\t" + hyperlink(customer.getWeb(), customer.getWeb()) + "<br/><br/>\n"
 							+				"\t\t\t" + cityMapLink(customer.getCity(), customer.getState(), customer.getCounty(), "Click here to get a map of " + customer.getCity() + ", " + customer.getState()) + "<br/><br/>\n"
-							+				"\t\t\t" + hyperlink("../../index.html", "Go back") + "<br/><br/>\n"
+							+				"\t\t\t" + hyperlink("../../OpenMeUpForWebDirectory.html", "Go back") + "<br/><br/>\n"
 							+				"\t\t\t<div id=\"footer\"><b>Created by</b> " + emailLink("neilpatel@pitt.edu", "Keep it up, Neil!", "Neil Patel") +"<b> | Customer DBMS| Last updated on 6/10/2018 </b></div>\n"
 							+			"\t\t</div>\n"
 										//// END OF MAIN DIV
